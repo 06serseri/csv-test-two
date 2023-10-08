@@ -9,7 +9,7 @@ import { IncomeStatementDTO } from './incomeStatementDTO';
 export class AppComponent {
   title = 'csv-test-two';
   inputField: string = '';
-  @ViewChild('filterName', { static: true }) filterName!: ElementRef;
+  @ViewChild('filterName', { static: true }) filterNameViewChild!: ElementRef;
 
   incomeStatementDTO: IncomeStatementDTO = {
     glCode: '',
@@ -353,6 +353,6 @@ export class AppComponent {
 
   resetIncomeStatementRowList() {
     this.incomeStatementRowList = [];
-    this.filterName.nativeElement.value = '';
+    this.filterNameViewChild.nativeElement.value = '';
   }
 }
