@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { IncomeStatementDTO } from './incomeStatementDTO';
 
 @Component({
@@ -9,6 +9,7 @@ import { IncomeStatementDTO } from './incomeStatementDTO';
 export class AppComponent {
   title = 'csv-test-two';
   inputField: string = '';
+  @ViewChild('filterName', { static: true }) filterName!: ElementRef;
 
   incomeStatementDTO: IncomeStatementDTO = {
     glCode: '',
@@ -348,5 +349,10 @@ export class AppComponent {
     //   'INCOME STATEMENT ROW LIST IS: ' +
     //     JSON.stringify(this.incomeStatementRowList)
     // );
+  }
+
+  resetIncomeStatementRowList() {
+    this.incomeStatementRowList = [];
+    this.filterName.nativeElement.value = '';
   }
 }

@@ -14,9 +14,13 @@
 <form>
   <div>
     <input
+      mdInput
       type="file"
+      #filterName
+      name="filterName"
       class="form-control mb-2"
       (change)="changeListener($event)"
+      (click)="resetIncomeStatementRowList()"
     />
 
     <button class="btn btn-warning" (click)="submit()">Print PDF</button>
