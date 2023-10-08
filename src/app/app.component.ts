@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IncomeStatementDTO } from './incomeStatementDTO';
 
 @Component({
@@ -70,16 +70,16 @@ export class AppComponent {
         if (csvDataRow.substring(0, 5) !== ',,,,,') {
           (this.incomeStatementDTO.glCode = csvDataRow.split(',')[0]),
             (this.incomeStatementDTO.glName = csvDataRow.split(',')[1]),
-            (this.incomeStatementDTO.periodToDateAmount = parseInt(
+            (this.incomeStatementDTO.periodToDateAmount = parseFloat(
               csvDataRow.split(',')[2]
             )),
             (this.incomeStatementDTO.periodToDatePercentage =
-              parseInt(csvDataRow.split(',')[3]) / 100),
-            (this.incomeStatementDTO.yearToDateAmount = parseInt(
+              parseFloat(csvDataRow.split(',')[3]) / 100),
+            (this.incomeStatementDTO.yearToDateAmount = parseFloat(
               csvDataRow.split(',')[4]
             )),
             (this.incomeStatementDTO.yearToDatePercentage =
-              parseInt(csvDataRow.split(',')[5]) / 100),
+              parseFloat(csvDataRow.split(',')[5]) / 100),
             (this.incomeStatementDTO.adjustingJournalEntry = 0), //INPUT FROM THE USER
             (this.incomeStatementDTO.roundedToZero =
               this.incomeStatementDTO.yearToDateAmount +

@@ -18,7 +18,7 @@
   <br />
   <hr />
 
-  <div id="printMeOut" style="font-size: 12px">
+  <div id="printMeOut">
     <img
       *ngIf="showJJT"
       height="387"
@@ -55,13 +55,17 @@
         <td>
           {{ incomeStatementRow.periodToDateAmount | currency }}
         </td>
-        <td>{{ incomeStatementRow.periodToDatePercentage | percent }}</td>
+        <td>
+          {{ incomeStatementRow.periodToDatePercentage | percent : "1.2-2" }}
+        </td>
         <td>{{ incomeStatementRow.yearToDateAmount | currency }}</td>
-        <td>{{ incomeStatementRow.yearToDatePercentage | percent }}</td>
+        <td>
+          {{ incomeStatementRow.yearToDatePercentage | percent : "1.2-2" }}
+        </td>
 
         <input
           [(ngModel)]="incomeStatementRowList[i].adjustingJournalEntry"
-          (change)="doAdjustingJournalEntry(i)"
+          (keyup)="doAdjustingJournalEntry(i)"
           *ngIf="!sumGlCodeList.includes(incomeStatementRow.glCode)"
           type="number"
           name="adjustingJournalEntry"
@@ -78,11 +82,10 @@
 
         <input
           [(ngModel)]="incomeStatementRowList[i].oneDollarRounding"
-          (change)="calculateFinalAmount(i)"
+          (keyup)="calculateFinalAmount(i)"
           *ngIf="!sumGlCodeList.includes(incomeStatementRow.glCode)"
           type="number"
           name="oneDollarRounding"
-          class="form-control"
           min="-1"
           max="1"
         />
