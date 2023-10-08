@@ -9,13 +9,19 @@
     allowfullscreen
   ></iframe>
 </div>
+<hr />
 
 <form>
-  <input type="file" class="upload" (change)="changeListener($event)" />
+  <div>
+    <input
+      type="file"
+      class="form-control mb-2"
+      (change)="changeListener($event)"
+    />
 
-  <button (click)="submit()">Print PDF</button>
+    <button class="btn btn-warning" (click)="submit()">Print PDF</button>
+  </div>
 
-  <br />
   <hr />
 
   <div id="printMeOut">
@@ -86,6 +92,7 @@
           *ngIf="!sumGlCodeList.includes(incomeStatementRow.glCode)"
           type="number"
           name="oneDollarRounding"
+          class="form-control"
           min="-1"
           max="1"
         />
